@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/CoffeeListFragment">
+
+    <fragment
+        android:id="@+id/CoffeeListFragment"
+        android:name="com.tcs.coffeeapp.CoffeeListFragment"
+        android:label="@string/coffee_list_fragment_label"
+        tools:layout="@layout/fragment_coffeelist">
+
+        <action
+            android:id="@+id/action_CoffeeListFragment_to_CoffeeDetailsFragment"
+            app:destination="@id/CoffeeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CoffeeDetailsFragment"
+        android:name="com.tcs.coffeeapp.CoffeeDetailsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_coffeedetails">
+
+        <action
+            android:id="@+id/action_CoffeeDetailsFragment_to_CoffeeListFragment"
+            app:destination="@id/CoffeeListFragment" />
+    </fragment>
+</navigation>
