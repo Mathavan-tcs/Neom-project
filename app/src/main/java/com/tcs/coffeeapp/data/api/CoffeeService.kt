@@ -5,7 +5,6 @@ import com.tcs.coffeeapp.utils.Constants.HOT_COFFEES_ENDPOINT
 import retrofit2.http.GET
 
 interface CoffeeService {
-
     @GET(HOT_COFFEES_ENDPOINT)
     suspend fun getHotCoffees(): List<Coffee>
 }
