@@ -9,8 +9,4 @@ interface CoffeeService {
 
     @GET(HOT_COFFEES_ENDPOINT)
     suspend fun getHotCoffees(): List<Coffee>
-
-    @GET(ICED_COFFEES_ENDPOINT)
-    suspend fun getIcedCoffees(): List<Coffee>
-
 }
