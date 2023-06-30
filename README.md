@@ -4,8 +4,7 @@ Coffee application are consumed sample API response from https://api.sampleapis.
 
 ## Branch naming
 master.\
-feature/coffee_list.\
-feature/coffee_details.
+feature/coffee_list.
 
 ## Code style guides
 New Kotlin code should follow the standard [Kotlin code style guidelines](https://kotlinlang.org/docs/coding-conventions.html) \
