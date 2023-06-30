@@ -29,7 +29,7 @@ class HotCoffeeListViewModel @Inject constructor(
                     setState(CoffeeListState(coffees = result.data ?: emptyList()))
                 }
                 is UIState.Failure -> {
-                    setState(CoffeeListState(error = result.message ?: "An unexpected error occurred"))
+                    setState(CoffeeListState(error = "An unexpected error occurred. Please try again later."))
                 }
             }
 
