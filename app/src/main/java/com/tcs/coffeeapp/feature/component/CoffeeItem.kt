@@ -16,11 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import com.tcs.coffeeapp.R
 import com.tcs.coffeeapp.data.model.Coffee
 
 @Composable
@@ -28,8 +30,8 @@ fun CoffeeItem(coffee: Coffee) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(14.dp),
-        elevation = 16.dp
+            .padding(dimensionResource(R.dimen.coffee_item_padding)),
+        elevation = dimensionResource(R.dimen.coffee_item_elevations)
     ) {
 
         Column(
@@ -65,6 +67,5 @@ fun CoffeeItem(coffee: Coffee) {
                 }
             }
         }
-
     }
 }
