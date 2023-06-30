@@ -3,7 +3,7 @@ This is code test assginment project for showing coffee list and coffee details.
 Coffee application are consumed sample API response from https://api.sampleapis.com/coffee/hot\
 
 ## Application Architecture
-Created MVVM and clean architecture.
+For developing this application used MVVM with clean architecture.
 ## Branch naming
 master.\
 feature/coffee_list.
