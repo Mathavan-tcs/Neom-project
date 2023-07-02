@@ -9,6 +9,8 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -25,34 +27,33 @@ class GetHotCoffeesUseCaseTest {
     private val coffeeList = mockk<List<Coffee>>(relaxed = true)
 
     @Test
-    fun `GIVEN coffee list, WHEN transform, THEN return success UIState coffee`() {
+    fun `GIVEN coffee list, WHEN transform, THEN return success UIState of coffee list`() = runBlocking {
         //Given
         `given list of coffee result`()
 
         //When
-        val result = getHotCoffeesUseCase.invoke()
+        val result = getHotCoffeesUseCase.invoke().toList()
 
         //Then
         assertThat(result).isEqualTo(UIState.Success(data = coffeeList))
     }
 
     @Test
-    fun `GIVEN coffee list, WHEN transform, THEN return failure UIState coffee`() {
+    fun `GIVEN coffee list empty, WHEN transform, THEN return failure UIState coffee`() = runBlocking {
         //Given
         `given empty list of coffee result`()
 
         //When
-        val result = getHotCoffeesUseCase.invoke()
+        val result = getHotCoffeesUseCase.invoke().toList()
 
         //Then
-        //assertThat(result).isEqualTo(UIState.Failure(message = "some thing wrong"))
+        assertThat(result.isEmpty()).isEqualTo(coffeeList)
     }
 
     //region convenience
     private fun `given list of coffee result`() {
         coEvery {
-            coffeeRepository.getHotCoffees(
-            )
+            coffeeRepository.getHotCoffees()
         } returns coffeeList
     }
 
