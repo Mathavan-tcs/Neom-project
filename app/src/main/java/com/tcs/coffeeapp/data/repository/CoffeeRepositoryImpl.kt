@@ -7,6 +7,5 @@ import javax.inject.Inject
 class CoffeeRepositoryImpl @Inject constructor(
     private val coffeeDataSource: CoffeeDataSource,
 ) : CoffeeRepository {
-
     override suspend fun getHotCoffees() = coffeeDataSource.getHotCoffees()
 }
