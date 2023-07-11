@@ -10,7 +10,7 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -27,19 +27,19 @@ class GetHotCoffeesUseCaseTest {
     private val coffeeList = mockk<List<Coffee>>(relaxed = true)
 
     @Test
-    fun `GIVEN coffee list, WHEN transform, THEN return success UIState of coffee list`() = runBlocking {
+    fun `GIVEN coffee list, WHEN transform, THEN return success UIState of coffee list`() = runTest {
         //Given
         `given list of coffee result`()
 
         //When
-        val result = getHotCoffeesUseCase.invoke().toList()
+        val result = getHotCoffeesUseCase.invoke().toList().first()
 
         //Then
         assertThat(result).isEqualTo(UIState.Success(data = coffeeList))
     }
 
     @Test
-    fun `GIVEN coffee list empty, WHEN transform, THEN return failure UIState coffee`() = runBlocking {
+    fun `GIVEN coffee list empty, WHEN transform, THEN return failure UIState coffee`() = runTest {
         //Given
         `given empty list of coffee result`()
 
